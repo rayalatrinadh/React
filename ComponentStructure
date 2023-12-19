@@ -1,0 +1,17 @@
+import { useState } from "react";
+export default function App() {
+  const [advice, setAdvice] = useState("");
+  async function getAdvice() {
+    const res = await fetch("https://api.adviceslip.com/advice");
+    const data = await res.json();
+    setAdvice(data.slip.advice);
+    console.log(data.slip.advice);
+  }
+
+  return (
+    <div>
+      <p>{advice}</p>
+      <button onClick={getAdvice}>Get Advice</button>
+    </div>
+  );
+}
