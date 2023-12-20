@@ -146,7 +146,7 @@ function getBook(id) {
 const books = getBooks();
 books;
 
- const book = getBook(2);
+ const book = getBook(1);
 // const title = book.title;
 // title;
 
@@ -156,7 +156,7 @@ books;
 // console.log(author,title);
 
 //destructing objects and arrays
-const {title, author, pages, publicationDate,genres} = book;
+const {title,hasMovieAdaptation, author, pages, publicationDate,genres} = book;
 console.log(title);
 
 // const primaryGenre = generes[0];
@@ -190,5 +190,13 @@ console.log(updateBook);
 
 //template literals
 
-const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}`;
+
+title
+const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in 
+  ${publicationDate.split("-")[0]}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
 summary;
+
+
+const pagesRange = pages > 1000 ? "Over a thousand":"Less than 1000";
+pagesRange;
+console.log(`The book has ${pagesRange} pags`);
