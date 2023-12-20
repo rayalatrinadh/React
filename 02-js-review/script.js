@@ -136,115 +136,138 @@ const data = [
 ];
 
 function getBooks() {
-  return data;
+  return data; 
 }
 
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+// const books = getBooks();
+// books;
+
+//  const book = getBook(1);
+// // const title = book.title;
+// // title;
+
+// // const author = book.author;
+// // author;
+
+// // console.log(author,title);
+
+// //destructing objects and arrays
+// const {title,hasMovieAdaptation, author, pages, publicationDate,genres} = book;
+// console.log(title);
+
+// // const primaryGenre = generes[0];
+// // const secondaryGenre = generes[1];
+
+// const[primaryGenre,secondaryGenre] = genres;
+// console.log(primaryGenre);
+// console.log(secondaryGenre);
+
+// //rest
+// genres;
+
+// const newGenres01 = ["trinadh",genres];
+// newGenres01;
+// const newGenres02 = ["trinadh",...genres];
+// newGenres02;
+
+// const updateBook = {
+//   ...book,
+
+//   //Adding a new property
+//   moviePublicationDate : "12-20-2023",
+  
+//   //overwriting an existing property
+//   pages : 1210,
+// };
+// updateBook;
+
+// console.log(book);
+// console.log(updateBook);
+
+// //template literals
+
+
+// title
+// const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in 
+//   ${publicationDate.split("-")[0]}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
+// summary;
+
+
+// const pagesRange = pages > 1000 ? "Over a thousand":"Less than 1000";
+// pagesRange;
+// console.log(`The book has ${pagesRange} pags`);
+
+// //arrowFunctions 
+// //one line functions
+
+// const getYear = (str) => str.split("-")[0];
+// console.log(getYear(publicationDate));
+
+// //23. Short-Circuiting And Logical Operators : &&, || ?? 
+
+// // const shortCircuitCheck = false || "trinadh";
+// // shortCircuitCheck;
+
+// // console.log(shortCircuitCheck);
+
+// // const shortCircuitCheck2 = true || "trinadh";
+// // shortCircuitCheck2
+
+// // //here 0 considering as falsy statement, so to overcome this
+// // //introduced new operator called ************nullish coalescing operator**********
+
+// // const shortCircuitChk3 = 0 || "trinadh";
+// // shortCircuitChk3
+
+// // //what i need to do. to print 0;
+
+// // const zero = 0;
+// // const shortCircuitChk4 = zero.reviewsCount || "trinadh";
+// // shortCircuitChk4
+
+// // const shortCircuitChk5 = zero.reviewsCount ?? "trinadh";
+// // shortCircuitChk5
+
+// const countWrong = book.reviews.librarything || "not data";
+// countWrong;
+
+// const count = book.reviews.librarything.reviewsCount || "no data";
+// count;
+
+// //24. Optional Chaining
+
+// function getTotalReviewCount(book){
+//   const goodreads = book.reviews?.goodreads?.reviewCount;
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+//   librarything;
+  
+// }
+
+// console.log(getTotalReviewCount(book));
+
 const books = getBooks();
+
 books;
 
- const book = getBook(1);
-// const title = book.title;
-// title;
+console.log(books);
 
-// const author = book.author;
-// author;
+const x = [1,2,3,4,5].map((el) => el * 2);
+console.log(x);
 
-// console.log(author,title);
+//how to get all the title of the object
 
-//destructing objects and arrays
-const {title,hasMovieAdaptation, author, pages, publicationDate,genres} = book;
-console.log(title);
+const titles = books.map((book) => book.title);
+titles;
 
-// const primaryGenre = generes[0];
-// const secondaryGenre = generes[1];
-
-const[primaryGenre,secondaryGenre] = genres;
-console.log(primaryGenre);
-console.log(secondaryGenre);
-
-//rest
-genres;
-
-const newGenres01 = ["trinadh",genres];
-newGenres01;
-const newGenres02 = ["trinadh",...genres];
-newGenres02;
-
-const updateBook = {
-  ...book,
-
-  //Adding a new property
-  moviePublicationDate : "12-20-2023",
-  
-  //overwriting an existing property
-  pages : 1210,
-};
-updateBook;
-
-console.log(book);
-console.log(updateBook);
-
-//template literals
-
-
-title
-const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in 
-  ${publicationDate.split("-")[0]}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
-summary;
-
-
-const pagesRange = pages > 1000 ? "Over a thousand":"Less than 1000";
-pagesRange;
-console.log(`The book has ${pagesRange} pags`);
-
-//arrowFunctions 
-//one line functions
-
-const getYear = (str) => str.split("-")[0];
-console.log(getYear(publicationDate));
-
-//23. Short-Circuiting And Logical Operators : &&, || ?? 
-
-// const shortCircuitCheck = false || "trinadh";
-// shortCircuitCheck;
-
-// console.log(shortCircuitCheck);
-
-// const shortCircuitCheck2 = true || "trinadh";
-// shortCircuitCheck2
-
-// //here 0 considering as falsy statement, so to overcome this
-// //introduced new operator called ************nullish coalescing operator**********
-
-// const shortCircuitChk3 = 0 || "trinadh";
-// shortCircuitChk3
-
-// //what i need to do. to print 0;
-
-// const zero = 0;
-// const shortCircuitChk4 = zero.reviewsCount || "trinadh";
-// shortCircuitChk4
-
-// const shortCircuitChk5 = zero.reviewsCount ?? "trinadh";
-// shortCircuitChk5
-
-const countWrong = book.reviews.librarything || "not data";
-countWrong;
-
-const count = book.reviews.librarything.reviewsCount || "no data";
-count;
-
-//24. Optional Chaining
-
-function getTotalReviewCount(book){
-  const goodreads = book.reviews?.goodreads?.reviewCount;
-  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
-  librarything;
-  
+const essentialData = books.map((book) => ({
+  title : book.title,
+  author : book.author,
 }
 
-console.log(getTotalReviewCount(book));
+))
+
+essentialData;
