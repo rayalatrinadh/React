@@ -165,3 +165,12 @@ console.log(title);
 const[primaryGenre,secondaryGenre] = genres;
 console.log(primaryGenre);
 console.log(secondaryGenre);
+
+//rest
+genres;
+
+const newGenres01 = ["trinadh",genres];
+newGenres01;
+const newGenres02 = ["trinadh",...genres];
+newGenres02;
+
