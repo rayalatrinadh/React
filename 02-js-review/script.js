@@ -174,3 +174,21 @@ newGenres01;
 const newGenres02 = ["trinadh",...genres];
 newGenres02;
 
+const updateBook = {
+  ...book,
+
+  //Adding a new property
+  moviePublicationDate : "12-20-2023",
+  
+  //overwriting an existing property
+  pages : 1210,
+};
+updateBook;
+
+console.log(book);
+console.log(updateBook);
+
+//template literals
+
+const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}`;
+summary;
