@@ -206,3 +206,45 @@ console.log(`The book has ${pagesRange} pags`);
 
 const getYear = (str) => str.split("-")[0];
 console.log(getYear(publicationDate));
+
+//23. Short-Circuiting And Logical Operators : &&, || ?? 
+
+// const shortCircuitCheck = false || "trinadh";
+// shortCircuitCheck;
+
+// console.log(shortCircuitCheck);
+
+// const shortCircuitCheck2 = true || "trinadh";
+// shortCircuitCheck2
+
+// //here 0 considering as falsy statement, so to overcome this
+// //introduced new operator called ************nullish coalescing operator**********
+
+// const shortCircuitChk3 = 0 || "trinadh";
+// shortCircuitChk3
+
+// //what i need to do. to print 0;
+
+// const zero = 0;
+// const shortCircuitChk4 = zero.reviewsCount || "trinadh";
+// shortCircuitChk4
+
+// const shortCircuitChk5 = zero.reviewsCount ?? "trinadh";
+// shortCircuitChk5
+
+const countWrong = book.reviews.librarything || "not data";
+countWrong;
+
+const count = book.reviews.librarything.reviewsCount || "no data";
+count;
+
+//24. Optional Chaining
+
+function getTotalReviewCount(book){
+  const goodreads = book.reviews?.goodreads?.reviewCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  librarything;
+  
+}
+
+console.log(getTotalReviewCount(book));
