@@ -156,5 +156,12 @@ books;
 // console.log(author,title);
 
 //destructing objects and arrays
-const {title, author, pages, publicationDate} = book;
+const {title, author, pages, publicationDate,genres} = book;
 console.log(title);
+
+// const primaryGenre = generes[0];
+// const secondaryGenre = generes[1];
+
+const[primaryGenre,secondaryGenre] = genres;
+console.log(primaryGenre);
+console.log(secondaryGenre);
