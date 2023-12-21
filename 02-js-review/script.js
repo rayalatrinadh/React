@@ -285,3 +285,30 @@ const adventureBooks = books
 .map((book) => book.title);
 
 adventureBooks;
+
+//Array Reduce 
+//simply like using temp variable to store the result for each iteration.
+
+const pagesAllBooks = books.reduce((sum,book) => sum + book.pages,0);
+pagesAllBooks;
+
+//ArraySort 
+
+const arr = [3, 7, 1, 5, 9];
+arr;
+const sorted = arr.sort((a,b) => a-b);
+sorted;
+arr;
+
+const arrMutable = [2,3,4,5,2,4,2];
+arrMutable;
+const sort = arrMutable.slice().sort((a,b) => a-b);
+arrMutable;
+sort;
+
+//Array of Array of objects 
+
+const sortedByPages = books.slice().sort((a,b) => a.pages - b.pages);
+sortedByPages;
+
+//29. Working with Immutable Arrays
