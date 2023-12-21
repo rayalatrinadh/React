@@ -249,6 +249,8 @@ function getBook(id) {
 
 // console.log(getTotalReviewCount(book));
 
+/*
+
 const books = getBooks();
 
 books;
@@ -334,3 +336,13 @@ book.id === 1 ? {...book,pages : 1210} : book
 );
 booksAfterUpdate;
 console.log(booksAfterUpdate);
+
+*/
+
+//Asynchronous JavaScript : Promises
+console.log("asynchronous Function Fetch")
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then((data)=>data.json())
+  .then(res => console.log(res));
+
+  console.log("trinadh");
