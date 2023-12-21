@@ -54,27 +54,12 @@ function App(){
         <p>Trinadh Rayala</p>
         <Header />
         <Menu />
-
         <Footer />
         
     </div>
 }
 
-//creating the Pizza Component
 
-function Pizza(){
-    return(
-    <div>
-   
-    <img src = "pizzas/focaccia.jpg" alt = "pizza Foccacia"/>
-    <div>
-
-    <strong>ingredients:</strong>
-    <p>"Bread with italian olive oil and rosemary"</p>
-    </div>
-    </div>
-    );
-}
 
 function Header(){
     const style = {
@@ -95,12 +80,37 @@ function Header(){
 function Menu(){
    return(
     <main className = "menu">
+        <h2>Our Menu</h2>
         <div>
-            <Pizza />
-            <Pizza />
+            <Pizza name = 'Pizza Trinadh' ingredients = 'salt, pepper, tomato'
+             photoName = 'pizzas/focaccia.jpg' 
+             price = {25}
+             />
+
+            <Pizza name = 'Pizza Rakesh' ingredients = 'Spinach, pepper, tomato,Onion'
+             photoName = 'pizzas/margherita.jpg' 
+             price = {35}
+             />
+         
         </div>
     </main>
    );
+}
+
+//creating the Pizza Component
+
+function Pizza(props){
+    console.log(props);
+    return(
+    <div className = "pizza">
+    <img src = {props.photoName} alt = {props.name}/>
+    <div>
+    <h1>{props.name}</h1>
+    <h3>{props.ingredients}</h3>
+    <span>{props.price + 3}</span>
+    </div>
+    </div>
+    );
 }
 
 function Footer(){
@@ -110,7 +120,6 @@ function Footer(){
     const closedHour = 20;
 
     const isOpen = hour >= openHour && hour <= closedHour;
-    console.log(isOpen);
     return(
         <footer className = "footer">
         <div>
