@@ -340,9 +340,25 @@ console.log(booksAfterUpdate);
 */
 
 //Asynchronous JavaScript : Promises
-console.log("asynchronous Function Fetch")
-fetch('https://jsonplaceholder.typicode.com/todos/1')
-  .then((data)=>data.json())
-  .then(res => console.log(res));
+// console.log("asynchronous Function Fetch")
+// fetch('https://jsonplaceholder.typicode.com/todos/1')
+//   .then((res)=>res.json())
+//   .then(data => console.log(data));
 
-  console.log("trinadh");
+//   console.log("trinadh");
+
+  //31. Asynchronous JavaScript : Async/Await
+  //real time using function
+
+  async function getTodos(){
+    const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    const data = await res.json();
+    console.log(data);
+
+    return data;
+  }
+
+  const todos = getTodos();
+  console.log(todos);
+
+  console.log("trinadh Rayala");
