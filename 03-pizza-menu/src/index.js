@@ -82,11 +82,14 @@ function Menu() {
 
       {
       numPizzas > 0 ? (
+        <>
+        <p>Hello Trinadh here is the list of the pizas.</p>
         <ul className="pizzas">
           {pizzaData.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
+        </>
       ):(
         <p>Oops, The List is Empty.</p>
       )
@@ -112,15 +115,15 @@ function Menu() {
 
 //creating the Pizza Component
 
-function Pizza(props) {
-  console.log(props);
+function Pizza({pizzaObj}) {
+  console.log(pizzaObj);
   return (
-    <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+    <li className = {`pizza ${pizzaObj.soldOut ? "sold-out":""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h1>{props.pizzaObj.name}</h1>
-        <h3>{props.pizzaObj.ingredients}</h3>
-        <span>{props.pizzaObj.price}</span>
+        <h1>{pizzaObj.name}</h1>
+        <h3>{pizzaObj.ingredients}</h3>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -136,12 +139,7 @@ function Footer() {
   return (
     <footer className="footer">
       {!isOpen && (
-        <div className="order">
-          <p>
-            Sorry we're closed. working Timings : {openHour}:00 to {closedHour}
-            :00
-          </p>
-        </div>
+       <Order openHour = {openHour} closedHour = {closedHour}/>
       )}
 
       {isOpen && (
@@ -159,6 +157,16 @@ function Footer() {
   );
 }
 
+function Order({openHour,closedHour}){
+  return (
+    <div className="order">
+    <p>
+      Sorry we're closed. working Timings : {openHour}:00 to {closedHour}
+      :00
+    </p>
+  </div>
+  );
+}
 //React 18
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
