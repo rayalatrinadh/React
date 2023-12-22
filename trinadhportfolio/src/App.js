@@ -1,15 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
-    <div>
-    <p>Trinadh Rayala</p>
-    <Portfolio />
+    <div className="card">
+      <p>Trinadh Rayala</p>
+      <Avatar />
+      <div className = "data">
+      <Intro />
+      </div>
+      <SkillList />
     </div>
-
   );
 }
+
+/*
 
 function Portfolio(){
   return(
@@ -28,4 +32,50 @@ function Portfolio(){
   );
 }
 
+*/
+
+function Avatar() {
+  return (
+    
+      <img className="avatar" src="/friends.jpg" alt="trinadhImage" />
+    
+  );
+}
+
+function Intro() {
+  return (
+    <div>
+      <h1>Trinadh Rayala.</h1>
+      <p>
+        Hello we are the group of 5 people went to Lord Venkateswara Temple which
+        locates at aurora. we 5 peoples are staying in a single room at the
+        residence of chicago. we are enjoyed a lot.
+        <span>Java</span>
+        <p>Hello</p>
+      </p>
+    </div>
+  );
+}
+
+function SkillList() {
+  return(
+    <div className = "skill-list">
+      <Skill  skill =  "java" color = "green" emoji = "💪"/>
+      <Skill  skill = "react" color = "green"  emoji = "💪"/>
+      <Skill  skill = "HTML+CSS" color = "green" emoji = "💪"/>
+      <Skill skill = "Angular"  color = "green" emoji = "💪"/>
+      <Skill skill = "AI"  color = "orangered" emoji="👶"/>
+
+    </div>
+  );
+}
+
+function Skill(props){
+  return(
+    <div className = "skill" style = {{backgroundColor : props.color}}>
+      <span>{props.skill}</span>
+      <span>{props.emoji}</span>
+    </div>
+  );
+}
 export default App;
