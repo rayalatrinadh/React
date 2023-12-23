@@ -7,18 +7,30 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
-export default function App() {
+
+export default function App(){
+  return (
+
+      <div>
+      <Steps />
+      <Steps />
+      </div>
+  );
+}
+function Steps() {
   // const step = 1;
   const [step, setStep] = useState(1);
   const [test, setTest] = useState({ name: "trinadh" });
   const [isOpen, setIsOpen] = useState(true);
 
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) 
+    setStep((step) => step-1);
   }
 
   function handleNext() {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) 
+    setStep((s) => s+1);
 
     //BAD PRACTICE
     //test.name = "rayala";
@@ -27,7 +39,7 @@ export default function App() {
   return (
     <div>
       {/* inLine Function Button */}
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+      <button className="close" onClick={() => setIsOpen((isOpen) => !isOpen)}>
          &times;
       </button>
 
