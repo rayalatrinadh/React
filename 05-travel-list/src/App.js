@@ -7,12 +7,24 @@ const initialItems = [
 ];
 
 export default function App() {
-  console.log(initialItems);
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item ) {
+    // in react everything is immutalbe
+    //  here is the syntax to updae the list object
+    // ...items -> it means the previous list is fetching
+    // and then add new item to the list
+    console.log(" Before : item in App() : " +  item);
+    //setItems((items) => [...items, {initialItems}]);
+    setItems((items) => [...items, item]);
+    console.log(" After : item in App() : " +  item);
+  }
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      {/* in this form component passing function */}
+      <Form onAddItems={handleAddItems} />
+      <PackingList items={items} />
       <Stats />
     </div>
   );
@@ -22,8 +34,8 @@ function Logo() {
   return <h1>🧜‍♂️ Far Away 😍</h1>;
 }
 
-function Form() {
-  const [description, setDescription] = useState("Trinadh");
+function Form({ onAddItems }) {
+  const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(3);
 
   function handleSubmit(event) {
@@ -34,6 +46,9 @@ function Form() {
     //configuring the new Item
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
+
+    //form prop
+    onAddItems(newItem);
 
     //set default values
     setDescription("");
@@ -59,7 +74,6 @@ function Form() {
         placeholder="Item..."
         value={description}
         onChange={(e) => {
-          //console.log(e.target.value);
           setDescription(e.target.value);
         }}
       />
@@ -68,12 +82,14 @@ function Form() {
   );
 }
 
-function PackingList() {
+function PackingList({ items }) {
+console.log("items : " +  {items});
+  
   return (
     <div className="list">
       {/* <ul> */}
       <li>
-        {initialItems.map((item) => (
+        {items.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </li>
@@ -88,7 +104,6 @@ function Item({ item }) {
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
-
       <button>❌</button>
     </li>
   );
