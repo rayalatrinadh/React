@@ -26,6 +26,8 @@ function Button({children ,onClick}){
 }
 
 export default function App(){
+  //const friends = initialFriends; //upState
+  const [friends,setFriends] = useState(initialFriends);
 
   const [showAddFriend, setShowAddFriend] = useState(false);
 
@@ -33,12 +35,21 @@ export default function App(){
     setShowAddFriend((show) => !show);
   }
 
+  function handleAddFriend(friend){
+    //remember react is immutable way dealings.
+    //here we are createing new array 
+    //not update the object. instead created new one.
+    setFriends((friends) => [...friends,friend]);
+    setShowAddFriend(false);
+
+  }
+
   return(
     <div  className = "app">
       <div className = "sidebar">
-        <FriendsList />
+        <FriendsList  friends ={friends}/>
 
-        {showAddFriend ? <FormAddFriend /> : ""}
+        {showAddFriend ? <FormAddFriend onAddFriend = {handleAddFriend}/> : ""}
         
         <Button onClick = {handleShowAddFriend}>
           
@@ -53,9 +64,7 @@ export default function App(){
   );
 }
 
-function FriendsList(){
-  
-  const friends = initialFriends;
+function FriendsList({friends}){
   
   return(
     <ul>
@@ -100,7 +109,7 @@ function Friend({friend}){
 }
 
 
-function FormAddFriend(){
+function FormAddFriend({onAddFriend}){
 
   //first declare the state and the add value to the html of the particular intput field
 
@@ -110,22 +119,25 @@ function FormAddFriend(){
   //this function is called by react with the event handle 
   //when onSubmit = {handleSubmit} activated
   function handleSubmit(e){
-    
     //to restrict the default calling the function
     e.preventDefault();
 
+    if(!name || !image)
+    return;
+
+
+    //crypto.randomUUID() is the browser default function to generate randomId
+    //it is not worked in the old browsers
+    const id = crypto.randomUUID();
     //creating the new Object(Friend)
     const newFriend = {
+      id,
       name,
       image,
-      balance : 0,
-      //crypto.randomUUID() is the browser default function to generate randomId
-      //it is not worked in the old browsers
-      id : crypto.randomUUID(),
+      balance : 0, 
     };
 
-    console.log("newFriend : ");
-    console.log(newFriend);
+    onAddFriend(newFriend);
   }
 
   return(
