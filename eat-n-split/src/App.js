@@ -101,13 +101,52 @@ function Friend({friend}){
 
 
 function FormAddFriend(){
+
+  //first declare the state and the add value to the html of the particular intput field
+
+  const [name,setName] = useState('');
+  const [image,setImage] = useState('');
+
+  //this function is called by react with the event handle 
+  //when onSubmit = {handleSubmit} activated
+  function handleSubmit(e){
+    
+    //to restrict the default calling the function
+    e.preventDefault();
+
+    //creating the new Object(Friend)
+    const newFriend = {
+      name,
+      image,
+      balance : 0,
+      //crypto.randomUUID() is the browser default function to generate randomId
+      //it is not worked in the old browsers
+      id : crypto.randomUUID(),
+    };
+
+    console.log("newFriend : ");
+    console.log(newFriend);
+  }
+
   return(
-    <form className = "form-add-friend">
+    <form 
+      className = "form-add-friend"
+      onSubmit = {handleSubmit}
+      >
       <label>🧑‍🤝‍🧑 Friend Name</label>
-      <input type = "text" />
+      <input 
+        type = "text" 
+        value = {name} 
+        onChange ={(e) => setName(e.target.value)}
+        />
 
       <label>🌄 Image URL </label>
-      <input type = "text" />
+      <input 
+        type = "text" 
+        value = {image}
+        onChange = {(e) => setImage(e.target.value)}
+        
+        />
 
       <Button>Add</Button>
     </form>
