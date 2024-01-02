@@ -15,3 +15,5 @@ look this slide 129/365 theory-slide
 
 114. Passing Elements as Props (Alternative to Children)
        *Instead of implicit children prop using element 
+what is prop drilling ? 
+Ans : passing the prop into the deep component tree( it means the same prop continuously go inside deeply traversing...)
