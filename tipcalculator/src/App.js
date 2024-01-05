@@ -23,7 +23,7 @@ function TipCalculator() {
     setSelectPercentage1(0);
     setSelectPercentage2(0);
   }
-
+//comment
   return (
     <div>
       <BillInput bill = {bill} onSetBill = {setBill}/>
